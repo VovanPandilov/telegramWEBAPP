@@ -1,0 +1,14 @@
+[Unit]
+Description=telegramWEBAPP GitHub Webhook Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/telegramWEBAPP/app
+EnvironmentFile=/opt/telegramWEBAPP/.env
+ExecStart=/usr/bin/gunicorn -b 0.0.0.0:9000 app.main:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
